@@ -13,6 +13,8 @@ public class sort {
 
 
             System.out.println(array[i] + " ");
+            System.out.println("add some changes");
+
         }
     }
 
