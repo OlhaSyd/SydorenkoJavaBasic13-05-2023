@@ -11,23 +11,25 @@ public class SteppedArray {
         System.out.print("Введіть максимальну кількість елементів ");
         int max = scanner.nextInt();
 
-        int[][] firstArray = new int[row][];
+        int[][] steppedArray = new int[row][];
 
         for (int i = 0; i < row; i++) {
             int column = (int) (Math.random() * (max + 1));
-            firstArray[i] = new int[column];
+            steppedArray[i] = new int[column];
         }
-        showArray1(firstArray, max);
-        numbersSortUp(firstArray);
+        generateArray(steppedArray, max);
+        numbersSortUp(steppedArray);
         System.out.print("Сортуваня \n");
-        numbersSortDown(firstArray);
-        showArray(firstArray);
-        arraySum(firstArray);
-        // showMinElement(firstArray);
-        showAbsoluteMin(showMinElement(firstArray));
+        numbersSortDown(steppedArray);
+        showArray(steppedArray);
+        arraySum(steppedArray);
+        // showAbsoluteMin(showMinElement(steppedArray));
+        //System.out.println();
+        division(steppedArray, showAbsoluteMin(showMinElement(steppedArray)));
+
     }
 
-    public static void showArray1(int[][] array, int max) {
+    public static void generateArray(int[][] array, int max) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 int randomNumber = (int) (Math.random() * 100);
@@ -99,40 +101,42 @@ public class SteppedArray {
     public static int[] showMinElement(int[][] array) {
         int[] minElements = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length - 1; j++) {
+            for (int j = 0; j <= array[i].length - 1; j++) {
                 if (i % 2 == 0) {
                     minElements[i] = array[i][0];
                 } else {
                     minElements[i] = array[i][array[i].length - 1];
                 }
             }
-            // System.out.print("Min elements ");
             System.out.print(minElements[i] + " ,");
         }
         return minElements;
     }
 
-    public static void showAbsoluteMin(int[] array) {
-        for (int j = 0; j < array.length - 1; j++) {
-            for (int i = 0; i < array.length - j - 1; i++) {
-                int tmp;
-                if (array[i] > array[i + 1]) {
-                    tmp = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = tmp;
+    public static int showAbsoluteMin(int[] array) {
+        int absoluteMin = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < absoluteMin) {
+                absoluteMin = array[i];
+            }
+        }
+        System.out.print("absolute min " + absoluteMin + ", ");
+        return absoluteMin;
+    }
+
+    public static void division(int[][] array, int min) {
+        int result = 0;
+        if (min != 0) {
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[i].length; j++) {
+                    int sum = 0;
+                    sum += array[i][j];
+                    result = sum / min;
+                    System.out.print("\n division result " + result + ", ");
                 }
             }
-
+        } else {
+            System.out.println(" Мінімальне число 0, ділення неможливе! ");
         }
-        System.out.print("absolute min " + array[0]);
     }
 }
-
-
-
-
-
-
-
-
-
