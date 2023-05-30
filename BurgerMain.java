@@ -8,7 +8,7 @@ public class BurgerMain {
         Burger dietBurger = new Burger("булочка", "мясо", "сир", "зелень");
 
         Burger doubleMeatBurger = new Burger("булочка", "мясо", "мясо", "сир", "зелень", "майонез");
-        ;
+
 
     }
 
