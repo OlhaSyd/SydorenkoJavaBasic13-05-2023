@@ -2,29 +2,49 @@ package com.sydorenko;
 
 public class Burger {
 
-    private String bun = "булочка";
-    private String meat = "м'ясо";
-    private String cheese = "сир";
-    private String greens = "зелень";
-    private String mayonnaise = "майонез";
+    private String bun;
+    private String meat;
+    private String cheese;
+    private String greens;
+    private String mayonnaise;
 
-    public Burger(String regularBurger) {
+    public Burger(String bun, String meat, String cheese, String greens, String mayonnaise) {
 
-        System.out.println(regularBurger + " склад: " + this.bun + ", " +
-                this.meat + ", " + this.cheese + ", " + this.greens + ", "
-                + this.mayonnaise);
+        this.bun = bun;
+        this.meat = meat;
+        this.cheese = cheese;
+        this.greens = greens;
+        this.mayonnaise = mayonnaise;
+
+        System.out.println("Звичайний бургер, склад: " + bun + ", " +
+                meat + ", " + cheese + ", " + greens + ", "
+                + mayonnaise);
     }
 
-    public Burger(String dietBurger, String except) {
+    public Burger(String bun, String meat, String cheese, String greens) {
 
-        System.out.println(dietBurger + " " + except + " склад: " + this.bun + ", " +
-                this.meat + ", " + this.cheese + ", " + this.greens);
+        this.bun = bun;
+        this.meat = meat;
+        this.cheese = cheese;
+        this.greens = greens;
+
+        System.out.println("Бургер без майонезу, склад: " + bun + ", " +
+                meat + ", " + cheese + ", " + greens);
     }
 
-    public Burger(String doubleMeatBurger, String x, int two) {
-        System.out.println(doubleMeatBurger + " склад: " + this.bun + ", " +
-                this.meat + " " + x + two + ", " + this.cheese + ", " + this.greens + ", "
-                + this.mayonnaise);
+
+    public Burger(String bun, String meat1, String meat2, String cheese, String greens, String mayonnaise) {
+
+        this.bun = bun;
+        this.meat = meat1;
+        this.meat = meat2;
+        this.cheese = cheese;
+        this.greens = greens;
+        this.mayonnaise = mayonnaise;
+
+        System.out.println("Бургер з подвійним м'ясом, склад: " + bun + ", " +
+                meat1 + ", " + meat2 + ", " + cheese + ", " + greens + ", "
+                + mayonnaise);
     }
 
 }

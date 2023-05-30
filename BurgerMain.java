@@ -3,9 +3,12 @@ package com.sydorenko;
 public class BurgerMain {
     public static void main(String[] args) {
 
-        Burger regularBurger = new Burger("Звичайний бургер");
-        Burger dietBurger = new Burger("Дієтичний бургер", "(без майонезу)");
-        Burger doubleMeatBurger = new Burger("Бургер з подвійним м'ясом", "x", 2);
+        Burger regularBurger = new Burger("булочка", "мясо", "сир", "зелень", "майонез");
+
+        Burger dietBurger = new Burger("булочка", "мясо", "сир", "зелень");
+
+        Burger doubleMeatBurger = new Burger("булочка", "мясо", "мясо", "сир", "зелень", "майонез");
+        ;
 
     }
 
