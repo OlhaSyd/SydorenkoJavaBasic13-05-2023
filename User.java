@@ -2,33 +2,32 @@ package com.sydorenko;
 
 public class User {
     private String name;
-    private int dateBrth;
-    private int monthBrth;
-    private int yearBrth;
+    private int dateOfBirth;
+    private int monthOfBirth;
+    private int yearOfBirth;
     private String email;
-
     private int telefone;
     private String lastName;
     private int weight;
     private int pressure;
     private int steps;
-    private int currentYear = 2020;
-    private int age = currentYear;
+    final static int CURRENT_YEAR = 2020;
+    private int age;
 
     public String getName() {
         return name;
     }
 
-    public int getDateBrth() {
-        return dateBrth;
+    public int getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public int getMonthBrth() {
-        return monthBrth;
+    public int getMonthOfBirth() {
+        return monthOfBirth;
     }
 
-    public int getYearBrth() {
-        return yearBrth;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
     public String getEmail() {
@@ -75,31 +74,30 @@ public class User {
         this.pressure = pressure;
     }
 
-    public User(String name, String lastName, int dateBrth, int monthBrth, int yearBrth, String email, int telefone,
-                int weight, int pressure, int steps) {
+    public User(String name, String lastName, int dateOfBirth, int monthOfBirth, int yearOfBirth,
+                String email, int telefone, int weight, int pressure, int steps) {
         this.name = name;
-        this.dateBrth = dateBrth;
-        this.monthBrth = monthBrth;
-        this.yearBrth = yearBrth;
+        this.dateOfBirth = dateOfBirth;
+        this.monthOfBirth = monthOfBirth;
+        this.yearOfBirth = yearOfBirth;
         this.email = email;
         this.telefone = telefone;
         this.lastName = lastName;
         this.weight = weight;
         this.pressure = pressure;
         this.steps = steps;
-        this.age -= yearBrth;
+        this.age = CURRENT_YEAR - yearOfBirth;
 
     }
 
-
     public void printAccountInfo() {
         System.out.println();
-        System.out.print("Name: " + getName() + "\n" + "Last name: " + getLastName() +
-                "\n" + "Date of berth: " + getDateBrth() + "\n" + "month of berth: " + getMonthBrth() + "\n" +
-                "year of berth: " + getYearBrth() + "\n" + "Full yers: " + getAge() + "\n" +
-                "email: " + getEmail() + "\n" + "Telefone: " + getTelefone() + "\n" +
-                "weight: " + getWeight() + "\n" + "pressure: " + getPressure() + "\n" +
-                "steps: " + getSteps());
+        System.out.print("Name: " + name + "\n" + "Last name: " + lastName +
+                "\n" + "Date of birth: " + dateOfBirth + "\n" + "month of birth: " + monthOfBirth + "\n" +
+                "year of birth: " + yearOfBirth + "\n" + "Full years: " + age + "\n" +
+                "email: " + email + "\n" + "Telefone: " + telefone + "\n" +
+                "weight: " + weight + "\n" + "pressure: " + pressure + "\n" +
+                "steps: " + steps);
         System.out.println();
     }
 }
