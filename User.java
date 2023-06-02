@@ -1,19 +1,19 @@
 package com.sydorenko;
 
 public class User {
-    private String name;
-    private int dateOfBirth;
-    private int monthOfBirth;
-    private int yearOfBirth;
-    private String email;
-    private int telefone;
+    final static int CURRENT_YEAR = 2020;
+    final String name;
+    final int dateOfBirth;
+    final int monthOfBirth;
+    final int yearOfBirth;
+    final String email;
+    final int telefone;
+    final int age;
     private String lastName;
     private int weight;
     private int pressure;
     private int steps;
-    final static int CURRENT_YEAR = 2020;
-    private int age;
-
+    
     public String getName() {
         return name;
     }
