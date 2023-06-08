@@ -1,81 +1,80 @@
 package com.sydorenko;
 
 public class Point implements Cloneable {
-    private int coordinatesX;
-    private int coordinatesY;
+    private int x;
+    private int y;
 
-
-    public int getCoordinatesX() {
-        return coordinatesX;
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public int getCoordinatesY() {
-        return coordinatesY;
+    public int getX() {
+        return x;
     }
 
-    public void setCoordinatesX(int coordinatesX) {
-        this.coordinatesX = coordinatesX;
+    public int getY() {
+        return y;
     }
 
-    public void setCoordinatesY(int coordinatesY) {
-        this.coordinatesY = coordinatesY;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public Point(int coordinatesX, int coordinatesY) {
-        this.coordinatesX = coordinatesX;
-        this.coordinatesY = coordinatesY;
+    public void setY(int y) {
+        this.y = y;
     }
 
 
     public void showCoordinates() {
 
-        System.out.println("coordinates X = " + coordinatesX + "\ncoordinates Y = " + coordinatesY);
+        System.out.println("coordinates x = " + x + "\ncoordinates y = " + y);
 
     }
 
     public void changeCoordinates(int x, int y) {
 
-        setCoordinatesX(x);
-        setCoordinatesY(y);
+        setX(x);
+        setY(y);
 
     }
 
-    public void showDistanceBetweenPoint(Point point1, Point point2) {
+    public double distanceToPoint(Point point) {
 
-        int a = (int) (Math.pow(point1.coordinatesY - point1.coordinatesX, 2)
-                + Math.pow(point2.coordinatesY - point2.coordinatesX, 2));
+        double distance = Math.sqrt((Math.pow(this.y - this.x, 2)
+                + Math.pow(point.y - point.x, 2)));
 
-        int b = (int) Math.sqrt(a);
-        System.out.println("відстань між двома точками = " + b);
-
+        System.out.println("відстань від Х до У = " + distance);
+        return distance;
     }
 
-    public void showDistanceToPoint(Point point2) {
+    public static double distanceBetweenPoint(Point point1, Point point2) {
 
-        int a = (int) (Math.pow(coordinatesY - coordinatesX, 2)
-                + Math.pow(point2.coordinatesY - point2.coordinatesX, 2));
+        double distance = Math.sqrt((Math.pow(point1.getY() - point1.getX(), 2)
+                + Math.pow(point2.getY() - point2.getX(), 2)));
 
-        int b = (int) Math.sqrt(a);
-        System.out.println("відстань до точки  = " + b);
-
+        System.out.println("відстань між Х та У  = " + distance);
+        return distance;
     }
 
 
     @Override
     public String toString() {
-        return "X, Y  = " + coordinatesX + ", " + coordinatesY;
+        return "x, y  = " + x + ", " + y;
     }
 
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
+        }
 
-        if (obj == null || !(obj instanceof Point))
+        if (obj == null || !(obj instanceof Point)) {
             return false;
+        }
 
         Point point = (Point) obj;
 
-        return this.coordinatesX == point.getCoordinatesX() && this.coordinatesY == point.getCoordinatesY();
+        return this.x == point.getX() && this.y == point.getY();
     }
 
     @Override
