@@ -5,9 +5,9 @@ import java.util.Objects;
 import static java.lang.Character.isDigit;
 
 public class User {
-    final String login;
-    final String password;
-    final String confirmPassword;
+    final private String login;
+    final private String password;
+    final private String confirmPassword;
 
     public User(String login, String password, String confirmPassword) {
 
@@ -21,7 +21,19 @@ public class User {
 
     }
 
-    public static void checkLogin(String array) {
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    static void checkLogin(String array) {
 
         if (array == null || array.length() == 0 | array.length() >= 20) {
             throw new WrongLoginException("Wrong login!");
@@ -29,14 +41,14 @@ public class User {
             for (int i = 0; i < array.length(); i++) {
                 char symbol = array.charAt(i);
 
-                if (symbol < 'a' || symbol > 'z') {
+                if (symbol < 'A' || symbol > 'Z' & symbol < 'a' || symbol > 'z') {
                     throw new WrongLoginException("Wrong login!");
                 }
             }
         }
     }
 
-    public static void checkPassword(String array) {
+    static void checkPassword(String array) {
 
         int countNumbers = 0;
         int countLetters = 0;
@@ -49,7 +61,7 @@ public class User {
 
             if (isDigit(symbol)) {
                 countNumbers++;
-            } else if (symbol >= 'a' && symbol <= 'z') {
+            } else if (symbol >= 'A' & symbol <= 'Z' | symbol >= 'a' && symbol <= 'z') {
                 countLetters++;
             }
         }
@@ -60,15 +72,17 @@ public class User {
         }
     }
 
-    public static void isPasswordMatch(String password, String confirmPassword) {
+     static void isPasswordMatch(String password, String confirmPassword) {
         if (password == null || confirmPassword == null) {
-            return;
+            throw new WrongPasswordException("Passwords not match!");
         }
         if (Objects.equals(password, confirmPassword)) {
-            return;
+           return;
+
         }
-        throw new WrongPasswordException("Passwords not match!");
+       throw new WrongPasswordException("Passwords not match!");
     }
+
 }
 
 
