@@ -14,7 +14,7 @@ public class UserTest {
     }
 
     @Test
-    void isLoginContainsEnglishLetters() {
+    void loginContainsNonEnglishLetters() {
         Assertions.assertThrows(WrongLoginException.class,
                 () -> {
                     User.checkLogin("вввв");
@@ -37,9 +37,8 @@ public class UserTest {
                 });
     }
 
-
     @Test
-    void isPasswordContainsNumbers() {
+    void passwordContainsOnlyEnglishLetters() {
         Assertions.assertThrows(WrongPasswordException.class,
                 () -> {
                     User.checkPassword("aaaaaaa");
@@ -47,7 +46,7 @@ public class UserTest {
     }
 
     @Test
-    void isPasswordContainsLetters() {
+    void passwordContainsOnlyNumbers() {
         Assertions.assertThrows(WrongPasswordException.class,
                 () -> {
                     User.checkPassword("2222222");
@@ -55,7 +54,7 @@ public class UserTest {
     }
 
     @Test
-    void isPasswordContainsEnglishLetters() {
+    void passwordContainsNonEnglishLetters() {
         Assertions.assertThrows(WrongPasswordException.class,
                 () -> {
                     User.checkPassword("вввввв12");
@@ -91,6 +90,60 @@ public class UserTest {
         Assertions.assertThrows(WrongPasswordException.class,
                 () -> {
                     User.checkPassword("");
+                });
+    }
+
+    @Test
+    void checkIsPasswordsMatch() {
+        Assertions.assertThrows(WrongPasswordException.class,
+                () -> {
+                    User.isPasswordMatch("AAaa22", "AAaa2");
+                });
+
+    }
+
+    @Test
+    void checkOnePasswordEmpty() {
+        Assertions.assertThrows(WrongPasswordException.class,
+                () -> {
+                    User.isPasswordMatch("AAaa22", " ");
+                });
+
+    }
+
+    @Test
+    void checkOnePasswordIsNull() {
+        Assertions.assertThrows(WrongPasswordException.class,
+                () -> {
+                    User.isPasswordMatch("AAaa22", null);
+                });
+
+    }
+
+    @Test
+    void checkThatUserCreate() {
+        User user = new User("Login", "aaa222", "aaa222");
+
+        Assertions.assertEquals("Login", user.getLogin());
+        Assertions.assertEquals("aaa222", user.getPassword());
+        Assertions.assertEquals("aaa222", user.getConfirmPassword());
+    }
+
+    @Test
+    void checkWhenUserEnteredIncorrectData() {
+        Assertions.assertThrows(WrongPasswordException.class,
+                () -> {
+                    new User("Login", "aaaa", "123aa");
+                });
+
+        Assertions.assertThrows(WrongPasswordException.class,
+                () -> {
+                    new User("Login", "aaaa222", "123aa");
+                });
+
+        Assertions.assertThrows(WrongLoginException.class,
+                () -> {
+                    new User("111", "aaaa22", "aaaa22");
                 });
     }
 
