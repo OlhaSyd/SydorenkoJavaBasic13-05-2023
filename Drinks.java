@@ -7,6 +7,8 @@ public class Drinks {
     final static double MOHITO_PRICE = 65;
     final static double MINERAL_WATER_PRICE = 10;
     final static double COLA_PRICE = 30;
+    public static int countDrinks;
+    public static double price;
     private DrinksMachine drinksMachine;
 
     public DrinksMachine getDrinksMachine() {
@@ -18,34 +20,40 @@ public class Drinks {
     }
 
     public static void choiceTea() {
-        System.out.println(DrinksMachine.TEA.getTitle());
+        System.out.println("Preparing your " + DrinksMachine.TEA.getTitle());
+        System.out.println(DrinksMachine.TEA.getTitle() + " completed! Have a nice day");
 
     }
 
     public static void choiceCoffee() {
 
-        System.out.println(DrinksMachine.COFFEE.getTitle());
-
+        System.out.println("Preparing your " + DrinksMachine.COFFEE.getTitle());
+        System.out.println("Adding milk...");
+        System.out.println(DrinksMachine.COFFEE.getTitle() + " completed! Have a nice day");
     }
 
     public static void choiceLemonade() {
 
-        System.out.println(DrinksMachine.LEMONADE.getTitle());
+        System.out.println("Preparing your " + DrinksMachine.LEMONADE.getTitle());
+        System.out.println(DrinksMachine.LEMONADE.getTitle() + " completed! Have a nice day");
     }
 
     public static void choiceMohito() {
 
-        System.out.println(DrinksMachine.MOHITO.getTitle());
+        System.out.println("Preparing your " + DrinksMachine.MOHITO.getTitle());
+        System.out.println(DrinksMachine.MOHITO.getTitle() + " completed! Have a nice day");
     }
 
     public static void choiceMineralWater() {
 
-        System.out.println(DrinksMachine.MINERAL_WATER.getTitle());
+        System.out.println("Preparing your " + DrinksMachine.MINERAL_WATER.getTitle());
+        System.out.println(DrinksMachine.MINERAL_WATER.getTitle() + " completed! Have a nice day");
     }
 
     public static void choiceCola() {
 
-        System.out.println(DrinksMachine.COLA.getTitle());
+        System.out.println("Preparing your " + DrinksMachine.COLA.getTitle());
+        System.out.println(DrinksMachine.COLA.getTitle() + " completed! Have a nice day");
     }
 
     public enum DrinksMachine {
@@ -67,7 +75,7 @@ public class Drinks {
         }
     }
 
-    public static double takeDrinks(DrinksMachine drinks) {
+    public static double takeDrinksAndPrice(DrinksMachine drinks) {
 
         switch (drinks) {
             case TEA:
